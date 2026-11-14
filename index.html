@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub | Student Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">S</span><span>StudentHub</span></div>
+        <p class="nav-label">MENU</p>
+        <a class="nav-link active" href="#dashboard">▦ <span>Dashboard</span></a>
+        <a class="nav-link" href="#students">▤ <span>Students</span></a>
+        <a class="nav-link" href="#student-form">＋ <span>Add student</span></a>
+        <div class="sidebar-note">
+            <strong>Student Portal</strong>
+            <p>Manage your student records in one place.</p>
+        </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">OVERVIEW</p>
+                <h1>Student Management</h1>
+                <p class="subheading">Welcome back, Admin. Here's your student overview.</p>
+            </div>
+            <div class="admin-chip"><span class="avatar">A</span><span>Administrator</span></div>
+        </header>
+
+        <section class="stats">
+            <article class="stat-card">
+                <div class="stat-icon blue">♙</div>
+                <p>Total students</p>
+                <h2 id="total-count">0</h2>
+                <span>Registered records</span>
+            </article>
+            <article class="stat-card">
+                <div class="stat-icon green">✓</div>
+                <p>Active records</p>
+                <h2 id="active-count">0</h2>
+                <span>Currently in database</span>
+            </article>
+        </section>
+
+        <section class="panel" id="student-form">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">STUDENT DETAILS</p>
+                    <h2 id="form-title">Add a new student</h2>
+                </div>
+                <span class="form-badge" id="form-mode">NEW RECORD</span>
+            </div>
+            <form id="student-form-element">
+                <div class="form-grid">
+                    <label>Full name
+                        <input type="text" id="name" placeholder="Enter student name" required>
+                    </label>
+                    <label>Roll number
+                        <input type="text" id="roll" placeholder="e.g. 23CS101" required>
+                    </label>
+                    <label>Email address
+                        <input type="email" id="email" placeholder="student@example.com" required>
+                    </label>
+                    <label>Course
+                        <input type="text" id="course" placeholder="e.g. Computer Science" required>
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary" type="submit" id="submit-button">＋ Add student</button>
+                    <button class="btn btn-light hidden" type="button" id="cancel-edit">Cancel</button>
+                </div>
+            </form>
+            <p class="message" id="form-message" role="status"></p>
+        </section>
+
+        <section class="panel" id="students">
+            <div class="table-heading">
+                <div>
+                    <p class="eyebrow">RECORD DIRECTORY</p>
+                    <h2>All students</h2>
+                </div>
+                <input class="search" type="search" id="search" placeholder="Search name, roll, email...">
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ROLL NUMBER</th>
+                            <th>STUDENT</th>
+                            <th>EMAIL</th>
+                            <th>COURSE</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-list">
+                        <tr><td colspan="5" class="empty-state">Loading student records...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="record-count" id="record-count">0 records</p>
+        </section>
+        <footer>StudentHub · Student Management System</footer>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
